@@ -9,7 +9,7 @@
  #####   避免 git status显示的中文文件名乱码
  #####   git config --global core.quotepath off 
  ### 4.git常用命令
- ##### it init 创建本地仓库 
+ ##### git init 创建本地仓库 
  ##### git add  添加到暂存区 
  ##### git commit -m "描述" 提交到本地仓库 
  ##### git status 检查工作区文件状态 
