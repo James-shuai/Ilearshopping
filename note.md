@@ -22,6 +22,7 @@
  ##### 提交: git push -u origin master 
  ##### 分支合并: git merge branchname
  ### 5.关联 
+ #### git remote add origin  "远程仓库地址"
  #### 第一次向远程仓库推送 git push -u -f origin  master 
  ##### 以后提交到远程 git push   origin  master
 
