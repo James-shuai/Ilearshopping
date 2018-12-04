@@ -81,7 +81,72 @@
  #### 查看支付状态
  ### 八、线上部署
  #### 阿里云部署
-
-
-
-
+ #### ------------------------------------------
+ # 数据库表设计
+ ### 创建数据库
+ ```
+ create database ilearshopping;
+ use ilearshopping;
+ ```
+ ### 用户表
+ ```
+ create table neuedu_user(
+ `id` int(11) not null auto_increment comment '用户id',
+ `username` varchar(50) not null comment '用户名',
+ `password` varchar(50) not null comment '密码',
+ `email` varchar(50) not null comment '邮箱',
+ `phone` varchar(11) not null comment '联系方式',
+ `question` varchar(100) not null comment '密保问题',
+ `answer` varchar(100) not null comment '答案',
+ `role` int(4) not null default 0 comment '用户角色',
+ `create_time` datetime comment '创建时间',
+ `update_time` datetime comment '修改时间',
+ PRIMARY KEY(`id`),
+ UNIQUE KEY `user_name_index`(`username`) USING BTREE
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
+ ```
+ ### 类别表
+ ```
+ create table neuedu_category(
+ `id` int(11) not null auto_increment comment '类别id',
+ `parent_id` int(11) not null default 0 comment '父类id',
+ `name` varchar(50) not null comment '类别名称',
+ `status` int(4) default 1 comment '类别状态1：正常2：废弃',
+ `create_time` datetime comment '创建时间',
+ `update_time` datetime comment '修改时间',
+ PRIMARY KEY(`id`)
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
+ ```
+ ### 商品表
+ ```
+ create table neuedu_product(
+ `id` int(11) not null auto_increment comment '商品id',
+ `category_id` int(11) not null comment '类别id',
+ `name` varchar(100) not null comment '商品名称',
+ `datail` text comment '商品详情',
+ `subtitle` varchar(200) comment '商品副标题',
+ `main_image` varchar(100) comment '商品主图',
+ `sub_image` varchar(200) comment '商品子图',
+ `price` decimal(20,2) not null comment '商品价格',
+ `stock` int(11) comment '库存',
+ `status` int(6) default 1 comment '商品状态1在售2下架3删除',
+ `create_time` datetime comment '创建时间',
+ `update_time` datetime comment '修改时间',
+ PRIMARY KEY(`id`)
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
+ ```
+ 
+ ### 购物车
+ ```
+ create table neuedu_cart(
+ `id` int(11) not null auto_increment comment '购物车id',
+ `user_id` int(11) not null comment '用户id',
+ `product_id` int(11) not null comment '商品id',
+ `quantity` int(11) not null comment '购买数量',
+ `checked` int(4) default 1 comment '1选中 0未选中',
+ `create_time` datetime comment '创建时间',
+ `update_time` datetime comment '修改时间',
+ PRIMARY KEY(`id`),
+ KEY `user_id_index`(`user_id`) USING BTREE
+ )ENGINE=InnoDB DEFAULT CHARSET=UTF8
+```
