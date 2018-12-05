@@ -20,6 +20,7 @@
  ##### 切换分支：git checkout 分支名 
  ##### 拉取: git pull 
  ##### 提交: git push -u origin master 
+ ##### 将本地分支推送到远程 git push origin head -u
  ##### 分支合并: git merge branchname
  ### 5.关联 
  #### git remote add origin  "远程仓库地址"
